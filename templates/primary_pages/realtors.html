@@ -1,0 +1,24 @@
+{% load static %}
+
+{% block content %}
+
+{% if reals %}
+
+   {% for reals in reals %}
+    {{ reals.name }} <br>
+       {{ reals.phone }}
+    {% endfor %}
+  {% else %}
+   <p>No Realtors available</p>
+{% endif %}
+
+
+    {% if real_mvp %}
+    {% for real_mvp in real_mvp %}
+        {{ reals.name }}
+        {% endfor %}
+
+    {% endif %}
+
+
+{% endblock %}

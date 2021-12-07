@@ -1,0 +1,14 @@
+{% load static %}
+{% load humanize  %}
+{% block content %}
+
+{% if list %}
+
+   {% for list in list %}
+    {{ list.title }} <br>
+       {{ list.price|intcomma }}
+    {% endfor %}
+  {% else %}
+   <p>No properties available</p>
+{% endif %}
+{% endblock %}
