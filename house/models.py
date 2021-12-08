@@ -19,8 +19,8 @@ class Listing(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=10)
     bedrooms = models.IntegerField()
     bathrooms = models.IntegerField()
-    sqft = models.IntegerField()
-    lot_size = models.IntegerField()
+    sqft = models.IntegerField(blank =True, null = True)
+    lot_size = models.IntegerField(blank =True, null = True)
     garage = models.IntegerField(blank=True, null =True)
     pool = models.BooleanField(default=False)
     boys_quarters = models.BooleanField(default=False)
@@ -31,19 +31,24 @@ class Listing(models.Model):
     date_listed = models.DateTimeField(default=datetime.now)
     agency_fee = models.BooleanField(default =True)
     main_image = models.ImageField(upload_to='main_image/&Y/&m/&d/')
-    image_1 = models.ImageField(blank=True, upload_to='image1/&Y/&m/&d/')
-    image_2 = models.ImageField(blank=True, upload_to='image2/&Y/&m/&d/')
-    image_3 = models.ImageField(blank=True, upload_to='image3/&Y/&m/&d/')
-    image_4 = models.ImageField(blank=True, upload_to='image4/&Y/&m/&d/')
-    image_5 = models.ImageField(blank=True, upload_to='image5/&Y/&m/&d/')
-    image_6 = models.ImageField(blank=True, upload_to='image6/&Y/&m/&d/')
+    video_of = models.FileField(upload_to='videos/&Y/&m/&d/', null=True, verbose_name="")
+    image_1 = models.ImageField(blank=True, upload_to='image_1/&Y/&m/&d/')
+    image_2 = models.ImageField(blank=True, upload_to='image_2/&Y/&m/&d/')
+    image_3 = models.ImageField(blank=True, upload_to='image_3/&Y/&m/&d/')
+    image_4 = models.ImageField(blank=True, upload_to='image_4/&Y/&m/&d/')
+    image_5 = models.ImageField(blank=True, upload_to='image_5/&Y/&m/&d/')
+    image_6 = models.ImageField(blank=True, upload_to='image_6/&Y/&m/&d/')
+    image_7 = models.ImageField(blank=True, upload_to='image_7/&Y/&m/&d/')
+    image_8 = models.ImageField(blank=True, upload_to='image_8/&Y/&m/&d/')
+    image_9 = models.ImageField(blank=True, upload_to='image_9/&Y/&m/&d/')
+    image_10 = models.ImageField(blank=True, upload_to='image_10/&Y/&m/&d/')
     published = models.BooleanField(default=False)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
 
     def save(self,*args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title +'-' + randomise_slug())
-            super(Listing, self).save(*args, **kwargs)
+        super(Listing, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
