@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, request
 from .models import *
-from realtor .models import *
+from realtor.models import *
 from django.core.paginator import EmptyPage, Paginator
 
 
@@ -28,13 +28,12 @@ def about_us(request):
 
 def real(request):
     reals = Realtor.objects.order_by('-hire_date')
-    real_mvp =  Realtor.objects.all().filter(is_mvp = True)
+    real_mvp = Realtor.objects.all().filter(is_mvp=True)
 
     context = {
-        'reals':reals,
-        'real_mvp':real_mvp
+        'reals': reals,
+        'real_mvp': real_mvp
     }
     return render(request, 'primary_pages/realtors.html', context)
-
 
 # def listing(request,)

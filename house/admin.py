@@ -3,8 +3,12 @@ from .models import Listing
 
 
 # Register your models here.
-@admin.register(Listing)
+# @admin.register(Listing)
+
 class ListingAdmin(admin.ModelAdmin):
-    list_display = ('title', 'city', 'realtor', 'price')
-    search_fields = ['title', 'realtor']
+    list_display = ('title', 'price', 'published')
+    search_fields = ['realtor', 'title']
     prepopulated_fields = {'slug': ('title',)}
+
+
+admin.site.register(Listing, ListingAdmin)

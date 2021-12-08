@@ -43,7 +43,7 @@ class Listing(models.Model):
     def save(self,*args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title +'-' + randomise_slug())
-            super(Realtor, self).save(*args, **kwargs)
+            super(Listing, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
