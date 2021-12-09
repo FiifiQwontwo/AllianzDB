@@ -1,6 +1,7 @@
 from django.db import models
 from realtor.models import *
 from furnishing.models import Furnishing
+from .validators import validate_video_extension
 import random
 import string
 from django.utils.text import slugify
@@ -31,7 +32,7 @@ class Listing(models.Model):
     date_listed = models.DateTimeField(default=datetime.now)
     agency_fee = models.BooleanField(default =True)
     main_image = models.ImageField(upload_to='main_image/&Y/&m/&d/')
-    video_of = models.FileField(upload_to='videos/&Y/&m/&d/', null=True, verbose_name="")
+    video_of = models.FileField(blank=True, upload_to='videos/&Y/&m/&d/',validators = [validate_video_extension],null=True, verbose_name="Video of Building")
     image_1 = models.ImageField(blank=True, upload_to='image_1/&Y/&m/&d/')
     image_2 = models.ImageField(blank=True, upload_to='image_2/&Y/&m/&d/')
     image_3 = models.ImageField(blank=True, upload_to='image_3/&Y/&m/&d/')

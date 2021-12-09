@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, request
 from .models import *
 from realtor.models import *
@@ -36,4 +36,8 @@ def real(request):
     }
     return render(request, 'primary_pages/realtors.html', context)
 
-# def listing(request,)
+
+def listing_details(request, slug):
+    house_details = get_object_or_404(Listing, slug=slug)
+    context = {'house_details': house_details}
+    return render(request, 'details/property.html', context)

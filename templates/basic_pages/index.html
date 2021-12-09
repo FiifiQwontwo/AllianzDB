@@ -5,7 +5,7 @@
 {% if list %}
 
    {% for list in list %}
-    {{ list.title }} <br>
+    <a href="{% url 'house:details_list' list.slug%}">{{ list.title }}</a>  <br>
        {{ list.price|intcomma }}
     {% endfor %}
   {% else %}
