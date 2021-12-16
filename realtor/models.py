@@ -12,6 +12,7 @@ def randy_slug():
 # Create your models here.
 class Realtor(models.Model):
     name = models.CharField(max_length=200)
+    firm_name = models.CharField(max_length=100, default='Vida Properties')
     photo = models.ImageField(upload_to='realtor/%Y/%m/%d/')
     email = models.CharField(max_length=100, unique=True)
     phone = models.CharField(unique=True, max_length=20)
