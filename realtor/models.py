@@ -1,8 +1,10 @@
+from django.conf import settings
 from django.db import models
 from datetime import datetime
 from django.utils.text import slugify
 import string
 import random
+from accounts.models import User
 
 
 def randy_slug():
@@ -20,6 +22,7 @@ class Realtor(models.Model):
     is_mvp = models.BooleanField(default=False)
     hire_date = models.DateTimeField(default=datetime.now, blank=True)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
 
     def save(self, *args, **kwargs):
         if not self.slug:

@@ -49,7 +49,7 @@ class User(AbstractBaseUser):
     objects = MyUserManager()
 
     def __str__(self):
-        return self.username + " ," + self.username
+        return self.username + " || " + self.email
 
     def has_perm(self, perm, obj=None):
         return self.is_admin

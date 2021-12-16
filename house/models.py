@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from realtor.models import *
 from furnishing.models import Furnishing
@@ -5,6 +6,7 @@ from .validators import validate_video_extension
 import random
 import string
 from django.utils.text import slugify
+from accounts.models import User
 
 
 # Create your models here.
@@ -45,6 +47,7 @@ class Listing(models.Model):
     image_10 = models.ImageField(blank=True, upload_to='image_10/&Y/&m/&d/')
     published = models.BooleanField(default=False)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
 
     def save(self,*args, **kwargs):
         if not self.slug:
