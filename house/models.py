@@ -7,6 +7,7 @@ import random
 import string
 from django.utils.text import slugify
 from accounts.models import User
+from build_material.models import Build
 
 
 # Create your models here.
@@ -29,7 +30,7 @@ class Listing(models.Model):
     boys_quarters = models.BooleanField(default=False)
     self_compound = models.BooleanField(default=False)
     parking_space = models.BooleanField(default=False)
-    # brick_type = models.CharField(choices=)
+    brick_type = models.ForeignKey(Build, blank=True, null=True,on_delete=models.DO_NOTHING)
     build_condition = models.CharField(max_length=20, help_text='Newly Built or Renovated')
     furnished = models.ForeignKey(Furnishing,on_delete=models.DO_NOTHING)
     facilities = models.TextField(blank = True, help_text = 'Facilities in the apartment')
