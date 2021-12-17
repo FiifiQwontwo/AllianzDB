@@ -48,6 +48,7 @@ class Listing(models.Model):
     image_9 = models.ImageField(blank=True, upload_to='image_9/&Y/&m/&d/')
     image_10 = models.ImageField(blank=True, upload_to='image_10/&Y/&m/&d/')
     published = models.BooleanField(default=False)
+    updated_at = models.DateTimeField(auto_now=True)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
 
