@@ -10,7 +10,7 @@ admin.site.site_header = "Real Estates"
 
 @admin.register(Realtor)
 class RealtorAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'email')
+    list_display = ('firm_name', 'phone', 'email')
     search_fields = ['name']
     prepopulated_fields = {'slug': ('name',)}
 

@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'accounts.apps.AccountsConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'realtor.apps.RealtorConfig',
     'django.contrib.humanize',
     'furnishing.apps.FurnishingConfig',
-    'accounts.apps.AccountsConfig',
+    'build_material.apps.BuildMaterialConfig',
 ]
 
 MIDDLEWARE = [
