@@ -26,16 +26,6 @@ def about_us(request):
     return render(request, 'basic_pages/about_us.html')
 
 
-def real(request):
-    reals = Realtor.objects.order_by('-hire_date')
-    real_mvp = Realtor.objects.all().filter(is_mvp=True)
-
-    context = {
-        'reals': reals,
-        'real_mvp': real_mvp
-    }
-    return render(request, 'primary_pages/realtors.html', context)
-
 
 def listing_details(request, slug):
     house_details = get_object_or_404(Listing, slug=slug)

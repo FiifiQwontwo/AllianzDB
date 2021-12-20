@@ -5,7 +5,6 @@ app_name = 'house'
 
 urlpatterns = [
     path('', index, name='home'),
-    # path('realtor/', real, name='realtors'),
     path('about_us/', about_us, name='about_us'),
     path('<slug:slug>/', listing_details, name='details_list'),
 ]
